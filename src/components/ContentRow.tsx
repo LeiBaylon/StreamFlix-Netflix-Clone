@@ -30,22 +30,22 @@ export default function ContentRow({ title, content, onContentClick }: ContentRo
   };
 
   return (
-    <div className="space-y-2 px-8 md:px-16 py-4">
-      <h2 className="text-white text-xl md:text-2xl font-semibold">{title}</h2>
+    <div className="space-y-3 px-6 md:px-16 py-6 animate-in fade-in slide-in-from-bottom-4">
+      <h2 className="text-white text-xl md:text-2xl font-bold tracking-tight">{title}</h2>
 
       <div className="relative group">
         {showLeftArrow && (
           <button
             onClick={() => scroll('left')}
-            className="absolute left-0 top-0 bottom-0 z-10 w-12 bg-black bg-opacity-50 hover:bg-opacity-75 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+            className="absolute left-0 top-0 bottom-0 z-20 w-12 md:w-16 bg-gradient-to-r from-black via-black/50 to-transparent text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
           >
-            <ChevronLeft size={40} />
+            <ChevronLeft size={40} className="drop-shadow-lg" />
           </button>
         )}
 
         <div
           ref={rowRef}
-          className="flex space-x-2 overflow-x-auto scrollbar-hide scroll-smooth"
+          className="flex space-x-2 md:space-x-3 overflow-x-auto scrollbar-hide scroll-smooth"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {content.map((item) => (
@@ -60,9 +60,9 @@ export default function ContentRow({ title, content, onContentClick }: ContentRo
         {showRightArrow && (
           <button
             onClick={() => scroll('right')}
-            className="absolute right-0 top-0 bottom-0 z-10 w-12 bg-black bg-opacity-50 hover:bg-opacity-75 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+            className="absolute right-0 top-0 bottom-0 z-20 w-12 md:w-16 bg-gradient-to-l from-black via-black/50 to-transparent text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
           >
-            <ChevronRight size={40} />
+            <ChevronRight size={40} className="drop-shadow-lg" />
           </button>
         )}
       </div>
