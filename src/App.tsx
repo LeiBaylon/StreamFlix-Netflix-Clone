@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import AuthForm from './components/Auth/AuthForm';
+import LandingPage from './pages/LandingPage';
 import HomePage from './pages/HomePage';
 import TVShowsPage from './pages/TVShowsPage';
 import MoviesPage from './pages/MoviesPage';
@@ -13,6 +14,7 @@ function AppContent() {
   const { user, loading } = useAuth();
   const [currentPage, setCurrentPage] = useState<PageType>('home');
   const [searchQuery, setSearchQuery] = useState('');
+  const [showAuth, setShowAuth] = useState(false);
 
   if (loading) {
     return (
@@ -26,6 +28,9 @@ function AppContent() {
   }
 
   if (!user) {
+    if (!showAuth) {
+      return <LandingPage onGetStarted={() => setShowAuth(true)} />;
+    }
     return <AuthForm />;
   }
 
