@@ -31,7 +31,7 @@ function AppContent() {
     if (!showAuth) {
       return <LandingPage onGetStarted={() => setShowAuth(true)} />;
     }
-    return <AuthForm />;
+    return <AuthForm onBack={() => setShowAuth(false)} />;
   }
 
   const handleNavigate = (page: PageType) => {

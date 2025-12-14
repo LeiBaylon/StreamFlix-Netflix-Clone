@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, User, ArrowLeft } from 'lucide-react';
 
-export default function AuthForm() {
+interface AuthFormProps {
+  onBack?: () => void;
+}
+
+export default function AuthForm({ onBack }: AuthFormProps) {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -67,6 +71,17 @@ export default function AuthForm() {
       {/* Main Container */}
       <div className="relative w-full max-w-md z-10">
         <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
+          {/* Back Button */}
+          {onBack && (
+            <button
+              onClick={onBack}
+              className="mb-6 flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-300 animate-in fade-in slide-in-from-left-4 duration-300"
+            >
+              <ArrowLeft size={20} />
+              <span className="font-medium">Back</span>
+            </button>
+          )}
+
           {/* Card */}
           <div className="bg-black/80 backdrop-blur-lg border border-gray-800 rounded-2xl p-8 md:p-10 shadow-2xl">
             {/* Logo */}

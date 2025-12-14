@@ -1,4 +1,4 @@
-import { Play, Sparkles, Zap, Users, Shield, ChevronRight } from 'lucide-react';
+import { Play, Sparkles, Zap, Users, Shield, ChevronRight, Download, Tv, Award, TrendingUp } from 'lucide-react';
 
 interface LandingPageProps {
   onGetStarted: () => void;
@@ -25,6 +25,61 @@ export default function LandingPage({ onGetStarted }: LandingPageProps) {
       icon: Shield,
       title: 'Secure & Private',
       description: 'Your data is protected with enterprise-grade security',
+    },
+  ];
+
+  const stats = [
+    { label: '50M+ Content Items', value: '50M+' },
+    { label: 'Countries Worldwide', value: '190+' },
+    { label: 'Concurrent Viewers', value: '10M+' },
+    { label: '99.9% Uptime', value: '99.9%' },
+  ];
+
+  const howItWorks = [
+    {
+      icon: Users,
+      step: '1',
+      title: 'Create Account',
+      description: 'Sign up in seconds with your email and password',
+    },
+    {
+      icon: Tv,
+      step: '2',
+      title: 'Choose Your Plan',
+      description: 'Pick the perfect subscription for your needs',
+    },
+    {
+      icon: Download,
+      step: '3',
+      title: 'Download & Watch',
+      description: 'Stream or download content for offline viewing',
+    },
+    {
+      icon: Users,
+      step: '4',
+      title: 'Share & Enjoy',
+      description: 'Watch with family across multiple devices',
+    },
+  ];
+
+  const testimonials = [
+    {
+      name: 'Sarah Martinez',
+      role: 'Movie Enthusiast',
+      quote: 'StreamFlix has the best collection I\'ve seen. The UI is intuitive and streaming is always smooth.',
+      avatar: '👩',
+    },
+    {
+      name: 'James Chen',
+      role: 'Binge Watcher',
+      quote: 'Finally a platform that understands what viewers want. Highly recommended for everyone!',
+      avatar: '👨',
+    },
+    {
+      name: 'Emily Rodriguez',
+      role: 'Family Entertainment',
+      quote: 'Perfect for family movie nights. Great content and zero hassle. Best subscription ever!',
+      avatar: '👩‍🦰',
     },
   ];
 
@@ -95,6 +150,20 @@ export default function LandingPage({ onGetStarted }: LandingPageProps) {
         </div>
       </div>
 
+      {/* Stats Section */}
+      <div className="relative z-10 py-20 px-6 md:px-16 bg-gradient-to-b from-gray-900/50 to-transparent">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {stats.map((stat, idx) => (
+              <div key={idx} className="animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ animationDelay: `${idx * 100}ms` }}>
+                <div className="text-4xl md:text-5xl font-black text-red-600 mb-2">{stat.value}</div>
+                <div className="text-gray-400 text-sm md:text-base">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Features Section */}
       <div className="relative z-10 py-24 px-6 md:px-16 bg-gradient-to-b from-transparent to-gray-900/50">
         <div className="max-w-7xl mx-auto">
@@ -119,6 +188,124 @@ export default function LandingPage({ onGetStarted }: LandingPageProps) {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </div>
+
+      {/* How It Works Section */}
+      <div className="relative z-10 py-24 px-6 md:px-16 bg-gray-900/50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            How It Works
+          </h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {howItWorks.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div key={idx} className="relative animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ animationDelay: `${idx * 100}ms` }}>
+                  {idx < howItWorks.length - 1 && (
+                    <div className="hidden lg:block absolute top-24 -right-3 w-6 h-0.5 bg-gradient-to-r from-red-600 to-transparent" />
+                  )}
+                  <div className="p-8 bg-gray-800/50 hover:bg-gray-800 border border-gray-700 hover:border-red-600/50 rounded-xl transition-all duration-300">
+                    <div className="flex items-center mb-4">
+                      <div className="inline-flex items-center justify-center w-12 h-12 bg-red-600 text-white font-bold rounded-full mr-4">
+                        {item.step}
+                      </div>
+                      <Icon className="text-red-600 w-6 h-6" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                    <p className="text-gray-400">{item.description}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Testimonials Section */}
+      <div className="relative z-10 py-24 px-6 md:px-16">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            Loved by Millions
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, idx) => (
+              <div
+                key={idx}
+                className="p-8 bg-gray-900/50 border border-gray-800 hover:border-red-600/50 rounded-xl transition-all duration-300 hover:-translate-y-2 animate-in fade-in slide-in-from-bottom-4 duration-700"
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                <div className="flex items-center mb-4">
+                  <div className="text-4xl mr-4">{testimonial.avatar}</div>
+                  <div>
+                    <h4 className="font-bold text-white">{testimonial.name}</h4>
+                    <p className="text-red-500 text-sm">{testimonial.role}</p>
+                  </div>
+                </div>
+                <p className="text-gray-400 italic">"{testimonial.quote}"</p>
+                <div className="flex mt-4 text-red-600">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i}>⭐</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Subscription Plans Section */}
+      <div className="relative z-10 py-24 px-6 md:px-16 bg-gradient-to-b from-transparent to-gray-900/50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            Simple Pricing
+          </h2>
+          <p className="text-center text-gray-400 mb-16 text-lg">Choose the plan that fits your lifestyle</p>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              { name: 'Basic', price: '$6.99', features: ['720p Streaming', '1 Device', 'Ad-Free', 'Access to Full Library'], highlighted: false },
+              { name: 'Standard', price: '$12.99', features: ['1080p Streaming', '2 Devices', 'Ad-Free', 'Download Offline', 'Priority Support'], highlighted: true },
+              { name: 'Premium', price: '$19.99', features: ['4K Streaming', '4 Devices', 'Ad-Free', 'Download Offline', '24/7 Support', 'Early Access'], highlighted: false },
+            ].map((plan, idx) => (
+              <div
+                key={idx}
+                className={`p-8 rounded-xl border transition-all duration-300 hover:-translate-y-2 animate-in fade-in slide-in-from-bottom-4 duration-700 ${
+                  plan.highlighted
+                    ? 'bg-red-600/10 border-red-600 shadow-2xl'
+                    : 'bg-gray-900/50 border-gray-800'
+                }`}
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                {plan.highlighted && <div className="text-center mb-4 text-red-600 font-bold text-sm uppercase tracking-wider">Most Popular</div>}
+                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                <div className="text-4xl font-black text-red-600 mb-6">
+                  {plan.price}
+                  <span className="text-lg text-gray-400">/month</span>
+                </div>
+                <ul className="space-y-3 mb-8">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="text-gray-300 flex items-center">
+                      <span className="text-red-600 mr-3 font-bold">✓</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  onClick={onGetStarted}
+                  className={`w-full py-3 rounded-lg font-bold transition-all duration-300 ${
+                    plan.highlighted
+                      ? 'bg-red-600 hover:bg-red-700 text-white'
+                      : 'bg-gray-800 hover:bg-gray-700 text-white'
+                  }`}
+                >
+                  Start Free Trial
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       </div>
